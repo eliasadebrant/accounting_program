@@ -52,11 +52,20 @@ void Year::draw(Context& c){
     for (const std::shared_ptr<sf::Drawable>& element : headbar_elements) {
         c.window.draw(*element);
     }
-    vector<std::shared_ptr<sf::Drawable>> go_back_elements = ui_data.build_go_back_button(c);
+
+    //Go back button
+    vector<std::shared_ptr<sf::Drawable>> go_back_elements = ui_data.build_button(c, 1720, 20, 150, 50, "Go back");
     for (const std::shared_ptr<sf::Drawable>& element : go_back_elements) {
         c.window.draw(*element);
     }
+
+    /*
     vector<std::shared_ptr<sf::Drawable>> add_payment_elements = ui_data.build_add_payment_button(c);
+    for (const std::shared_ptr<sf::Drawable>& element : add_payment_elements) {
+        c.window.draw(*element);
+    }
+    */
+    vector<std::shared_ptr<sf::Drawable>> add_payment_elements = ui_data.build_button(c, 1670, 90, 200, 50, "Add Verificate");
     for (const std::shared_ptr<sf::Drawable>& element : add_payment_elements) {
         c.window.draw(*element);
     }

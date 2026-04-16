@@ -132,7 +132,8 @@ void AddPaymentState::draw(Context&c) {
     c.window.clear(sf::Color::White);
 
 
-    vector<std::shared_ptr<sf::Drawable>> go_back_elements = ui_data.build_go_back_button(c);
+    //Go back button
+    vector<std::shared_ptr<sf::Drawable>> go_back_elements = ui_data.build_button(c, 1720, 20, 150, 50, "Go back");
     for (const std::shared_ptr<sf::Drawable>& element : go_back_elements) {
         c.window.draw(*element);
     }

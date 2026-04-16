@@ -49,65 +49,6 @@ vector<std::shared_ptr<sf::Drawable>> UIData::build_year_list(Context& c){
     return year_list_elements;
 };
 
-vector<std::shared_ptr<sf::Drawable>> UIData::build_go_back_button(Context& c){
-    vector<std::shared_ptr<sf::Drawable>> go_back_elements;
-
-    auto button = std::make_shared<sf::RectangleShape>(sf::Vector2f(150.f, 50.f));
-    button->setFillColor(sf::Color::Transparent);
-    button->setOutlineColor(sf::Color::Black);
-    button->setOutlineThickness(2.0f);
-    button->setPosition(1720.f, 20.f);
-    go_back_elements.push_back(button);
-
-    auto text = std::make_shared<sf::Text>();
-    text->setFont(c.font);
-    text->setString("Go Back");
-    text->setPosition(1730.f, 30.f);
-    text->setFillColor(sf::Color::Black);
-    go_back_elements.push_back(text);
-
-    return go_back_elements;
-};
-
-vector<std::shared_ptr<sf::Drawable>> UIData::build_add_year_button(Context& c){
-    vector<std::shared_ptr<sf::Drawable>> add_year_button_elements;
-
-    auto button = std::make_shared<sf::RectangleShape>(sf::Vector2f(150.f, 50.f));
-    button->setFillColor(sf::Color::Transparent);
-    button->setOutlineColor(sf::Color::Black);
-    button->setOutlineThickness(2.0f);
-    button->setPosition(1720.f, 90.f);
-    add_year_button_elements.push_back(button);
-
-    auto text = std::make_shared<sf::Text>();
-    text->setFont(c.font);
-    text->setString("Add Year");
-    text->setPosition(1730.f, 100.f);
-    text->setFillColor(sf::Color::Black);
-    add_year_button_elements.push_back(text);
-
-    return add_year_button_elements;
-};
-
-vector<std::shared_ptr<sf::Drawable>> UIData::build_add_payment_button(Context& c){
-    vector<std::shared_ptr<sf::Drawable>> add_payment_button_elements;
-
-    auto button = std::make_shared<sf::RectangleShape>(sf::Vector2f(200.f, 50.f));
-    button->setFillColor(sf::Color::Transparent);
-    button->setOutlineColor(sf::Color::Black);
-    button->setOutlineThickness(2.0f);
-    button->setPosition(1670.f, 90.f);
-    add_payment_button_elements.push_back(button);
-
-    auto text = std::make_shared<sf::Text>();
-    text->setFont(c.font);
-    text->setString("Add Payment");
-    text->setPosition(1680.f, 100.f);
-    text->setFillColor(sf::Color::Black);
-    add_payment_button_elements.push_back(text);
-
-    return add_payment_button_elements;
-}
 
 vector<std::shared_ptr<sf::Drawable>> UIData::draw_all_payments(Context& c, int yearindex){
     vector<std::shared_ptr<sf::Drawable>> print_all_payments_elements;
@@ -296,25 +237,29 @@ vector<std::shared_ptr<sf::Drawable>> UIData::build_add_payment_window(Context& 
     //här bör även läggas till kostnadsställen
 }
 
-vector<std::shared_ptr<sf::Drawable>> UIData::build_settings_button(Context& c){
-    vector<std::shared_ptr<sf::Drawable>> build_settings_button_elements;
+
+vector<std::shared_ptr<sf::Drawable>> UIData::build_button(Context& c, 
+        int x_pos, int y_pos, int x_size, int y_size, string button_text){
+
+    vector<std::shared_ptr<sf::Drawable>> build_button_elements;
 
 
-    auto button = std::make_shared<sf::RectangleShape>(sf::Vector2f(150.f, 50.f));
+    auto button = std::make_shared<sf::RectangleShape>(sf::Vector2f(x_size, y_size));
     button->setFillColor(sf::Color::Transparent);
     button->setOutlineColor(sf::Color::Black);
     button->setOutlineThickness(2.0f);
-    button->setPosition(1720.f, 220.f);
-    build_settings_button_elements.push_back(button);
+    button->setPosition(x_pos, y_pos);
+    build_button_elements.push_back(button);
 
     auto text = std::make_shared<sf::Text>();
     text->setFont(c.font);
-    text->setString("Settings");
-    text->setPosition(1730.f, 230.f);
+    text->setString(button_text);
+    text->setPosition(x_pos + 5, y_pos + 5);
     text->setFillColor(sf::Color::Black);
-    build_settings_button_elements.push_back(text);
+    build_button_elements.push_back(text);
 
-    return build_settings_button_elements;
+    return build_button_elements;
 }
+
 
 

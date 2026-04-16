@@ -107,20 +107,31 @@ void AllYears::draw(Context&c){
         c.window.draw(*element);
     }
 
-    vector<std::shared_ptr<sf::Drawable>> go_back_elements = ui_data.build_go_back_button(c);
+    //Go back button
+    vector<std::shared_ptr<sf::Drawable>> go_back_elements = ui_data.build_button(c, 1720, 20, 150, 50, "Go back");
     for (const std::shared_ptr<sf::Drawable>& element : go_back_elements) {
         c.window.draw(*element);
     }
-
+    /*
     vector<std::shared_ptr<sf::Drawable>> add_year_elements = ui_data.build_add_year_button(c);
     for (const std::shared_ptr<sf::Drawable>& element : add_year_elements) {
         c.window.draw(*element);
     }
+    */
+    vector<std::shared_ptr<sf::Drawable>> add_year_elements = ui_data.build_button(c, 1720, 90, 150, 50, "Add Year");
+    for (const std::shared_ptr<sf::Drawable>& element : add_year_elements) {
+        c.window.draw(*element);
+    }
+    /*
     vector<std::shared_ptr<sf::Drawable>> settings_button_elements = ui_data.build_settings_button(c);
     for (const std::shared_ptr<sf::Drawable>& element : settings_button_elements) {
         c.window.draw(*element);
     }
-
+    */
+    vector<std::shared_ptr<sf::Drawable>> settings_button_elements = ui_data.build_button(c, 1720, 220, 150, 50, "Settings");
+    for (const std::shared_ptr<sf::Drawable>& element : settings_button_elements) {
+        c.window.draw(*element);
+    }
 
 
 
