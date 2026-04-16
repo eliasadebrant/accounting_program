@@ -12,13 +12,16 @@ string AllYears::get_state() const{
 
 
 bool AllYears::handle_input(sf::Event& e, Context& c) {
-    //Year list börjar på 40, 140. Efter 50 kommer nästa element i all_years
+    
+    
     if (e.type == sf::Event::MouseButtonPressed) {
         if (e.mouseButton.button == sf::Mouse::Left) {
             float mouse_x = e.mouseButton.x;
             float mouse_y = e.mouseButton.y;
 
+            //If klicked on one of the years, go to that year
             if (mouse_x >= 40.f && mouse_x <= 340.f) {
+
                 int index = (mouse_y - 140.f) / 50.f;
                 if (index >= 0 && index < c.data.all_years.size()) {
                     next_state = std::make_unique<Year>("Year", 
@@ -27,34 +30,21 @@ bool AllYears::handle_input(sf::Event& e, Context& c) {
                                                         index);
                     cout << "Nästa state satt till " << next_state->get_state() << endl;
                 }
-            }
-        }
-    }
 
-     if (e.type == sf::Event::MouseButtonPressed) {
-        if (e.mouseButton.button == sf::Mouse::Left) {
-            float mouse_x = e.mouseButton.x;
-            float mouse_y = e.mouseButton.y;
-
-            if (mouse_x >= 1720.f && mouse_x <= 1870.f && mouse_y >= 20.f && mouse_y <= 70.f) {
+            //If "go back" is klicked, go back to menu
+            } else if (mouse_x >= 1720.f && mouse_x <= 1870.f && mouse_y >= 20.f && mouse_y <= 70.f) {
                 next_state = std::make_unique<MenuState>("MenuState");
                 cout << "Nästa state satt till " << next_state->get_state() << endl;
-            }
-        }
-    }
-    if (e.type == sf::Event::MouseButtonPressed) {
-        if (e.mouseButton.button == sf::Mouse::Left) {
-            float mouse_x = e.mouseButton.x;
-            float mouse_y = e.mouseButton.y;
 
-            if (mouse_x >= 1730.f && mouse_x <= 1880.f && mouse_y >= 90.f && mouse_y <= 140.f) {
+            //If "add year" is klicked, open the addyear text prompt
+            } else if (mouse_x >= 1730.f && mouse_x <= 1880.f && mouse_y >= 90.f && mouse_y <= 140.f) {
                 typing = true;
                 current_input = "";
                 cout << "Lägger till år" << endl;
             }
         }
     }
-    
+
 
 
     if (typing && e.type == sf::Event::TextEntered)
